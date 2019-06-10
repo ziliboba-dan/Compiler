@@ -1,0 +1,20 @@
+package main;
+var i, max int;
+var word string;
+func poisk() {
+	var array [5]int;
+	i = 0;
+	max = 0;
+	array[0] = 23;
+	array[1] = 2223;
+	array[2] = 213;
+	array[3] = 66666;
+	array[4] = 2233;
+	for (i < 5) {
+		if (array[i] > max) {
+			max = array[i]
+		};
+		i = i + 1;
+	};
+	print(max);
+};
