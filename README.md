@@ -1,5 +1,5 @@
 
-#  Compiler for subset of Golan
+#  Compiler for subset of Golang
 Евтушенко Данил 
 Группа: ИВ-621
 - [x] Лексер
