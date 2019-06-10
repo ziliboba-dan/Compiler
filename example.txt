@@ -1,10 +1,8 @@
 package main;
 var i, max int;
 var word string;
-
 func poisk() {
 	var array [5]int;
-
 	i = 0;
 	max = 0;
 	array[0] = 23;
@@ -19,8 +17,4 @@ func poisk() {
 		i = i + 1;
 	};
 	print(max);
-};
-
-func pois45k(asd int) {
-
 };
