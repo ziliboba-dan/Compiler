@@ -1,0 +1,62 @@
+SourceFile -> Packageclause Block
+
+Packageclause -> "package" Variable
+
+Block -> Decl CompStatement
+
+Decl -> ("var" (VarDeclaration)+)*
+       | ("func" Variable "(" ParametrList ")" "{" Block "}")*
+       | Empty
+
+VarDeclaration -> ID ("," ID)*  TypeSpec #ID~Variable~identifier
+
+TypeSpec ->  (array| noarray) "int" | "string"
+
+ParametrList -> Parametrs
+                | Parametrs "," ParametrList
+
+Parametrs -> ID ("," ID)*  TypeSpec
+
+CompStatement -> StatementList
+
+StatementList -> Statement
+               | Statement ";" StatementList
+
+Statement ->  CompStatement
+          | AssigAtatement
+          | PrintStatement
+          | ScanStatement
+          | IfStmt
+          | WhileStmt
+          | CallStmt
+          | Empty
+
+AssigAtatement ->  Variable "=" Expr
+
+PrintStatement ->  "print" Expr
+
+ScanStatement ->  "scan" Expr
+
+CallStmt       ->  identifier "(" ")".
+
+WhileStmt        -> "for" Condition Block.
+
+IfStmt -> "if" Condition Block.
+
+Condition      -> "(" Expr rel_op Expr ")".
+rel_op          -> "==" | "!=" | "<" | "<=" | ">" | ">=".
+
+Empty ->
+
+Expr ->  Term (("+" | "-") Term)*
+
+Term ->  Factor (("*" | "/") Factor)*
+
+Factor ->  "+" Factor
+       | "-" Factor
+       | "int"
+       | "string"
+       | LPAREN Expr RPAREN
+       | Variable
+
+Variable ->  identifier | identifier "[" Number"]"
