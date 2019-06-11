@@ -46,6 +46,7 @@ class Variable(AbstractSyntaxTree):
     def __init__(self, token, id):
         # self.token = token
         self.value = str(token.value) + str(id)
+        self.id = id
 
 
 class UnaryOperator(AbstractSyntaxTree):
@@ -67,6 +68,13 @@ class Number(AbstractSyntaxTree):
     def __init__(self, token):
         # self.token = token
         self.value = token.value
+        self.type = token.type
+
+class LITTERAL(AbstractSyntaxTree):
+    def __init__(self, token):
+        # self.token = token
+        self.value = token.value
+        self.type = token.type
 
 
 class Compound(AbstractSyntaxTree):

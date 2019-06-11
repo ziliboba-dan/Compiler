@@ -159,7 +159,7 @@ class Parser(object):
           Factor : "+" Factor
            | "-" Factor
            | "int"
-           | "string"
+           | LITTERAL
            | LPAREN Expr RPAREN
            | Variable
         """
@@ -167,6 +167,10 @@ class Parser(object):
         if token.type == tokens.INT:
             self.accept(tokens.INT)
             return AST.Number(token)
+        if token.type == tokens.LITTERAL:
+            # print(token.value)
+            self.accept(tokens.LITTERAL)
+            return AST.LITTERAL(token)
         if token.type == tokens.PLUS:
             self.accept(tokens.PLUS)
             node = AST.UnaryOperator(token, self.factor())
